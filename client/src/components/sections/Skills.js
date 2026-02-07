@@ -6,7 +6,6 @@ import {
   FaDatabase,
   FaCode,
   FaTools,
-  FaCloud,
 } from 'react-icons/fa';
 import {
   SiMongodb,
@@ -16,16 +15,9 @@ import {
   SiHtml5,
   SiCss3,
   SiGit,
-  SiDocker,
   SiAmazonaws,
   SiCsharp,
   SiDotnet,
-  SiPostgresql,
-  SiMysql,
-  SiRedis,
-  SiNpm,
-  SiJira,
-  SiLinux,
 } from 'react-icons/si';
 import './Section.css';
 
