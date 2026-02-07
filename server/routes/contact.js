@@ -31,7 +31,7 @@ router.post(
 
       const mailOptions = {
         from: process.env.EMAIL_USER,
-        to: process.env.CONTACT_EMAIL || process.env.EMAIL_USER,
+        to: process.env.CONTACT_EMAIL || 'masabyasin@gmail.com',
         replyTo: email,
         subject: subject || `Portfolio Contact: ${name}`,
         html: `
