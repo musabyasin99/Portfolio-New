@@ -4,6 +4,13 @@ import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/f
 import axios from 'axios';
 import './Section.css';
 
+// Real contact details: mailto/tel use these; display is masked for privacy
+const REAL_EMAIL = 'musab@maple.com';
+const REAL_PHONE = '+91-8491968782';
+const [emailLocal, emailDomain] = REAL_EMAIL.split('@');
+const DISPLAY_EMAIL = emailLocal.slice(0, 2) + 'X'.repeat(Math.max(0, emailLocal.length - 2)) + '@' + emailDomain;
+const DISPLAY_PHONE = 'X'.repeat(REAL_PHONE.length - 2) + REAL_PHONE.slice(-2);
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -68,21 +75,21 @@ const Contact = () => {
               <FaEnvelope className="contact-icon" />
               <div>
                 <h4>Email</h4>
-                <p><a href="mailto:musab@maple.com" style={{color: 'inherit', textDecoration: 'none'}}>musab@maple.com</a></p>
+                <p><a href={`mailto:${REAL_EMAIL}`} style={{color: 'inherit', textDecoration: 'none'}}>{DISPLAY_EMAIL}</a></p>
               </div>
             </div>
             <div className="contact-item">
               <FaPhone className="contact-icon" />
               <div>
                 <h4>Phone</h4>
-                <p><a href="tel:+15550000000" style={{color: 'inherit', textDecoration: 'none'}}>+1 (555) 000-0000</a></p>
+                <p><a href={`tel:${REAL_PHONE.replace(/\D/g, '')}`} style={{color: 'inherit', textDecoration: 'none'}}>{DISPLAY_PHONE}</a></p>
               </div>
             </div>
             <div className="contact-item">
               <FaMapMarkerAlt className="contact-icon" />
               <div>
                 <h4>Location</h4>
-                <p>City, State – 12345, Country</p>
+                <p>Baghat, Srinagar, J&K – 190005, India</p>
               </div>
             </div>
           </div>
