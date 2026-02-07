@@ -79,10 +79,11 @@ Visit your repository on GitHub to confirm all files are uploaded.
 
 4. **Configure Project**
    - **Framework Preset:** Create React App
-   - **Root Directory:** `client`
+   - **Root Directory:** `client` ← **Critical:** Must be `client` so Vercel builds the React app, not the repo root (which has no frontend build).
    - **Build Command:** `npm run build`
    - **Output Directory:** `build`
    - **Install Command:** `npm install`
+   - The repo includes `client/vercel.json` with SPA rewrites so all routes serve your app correctly.
 
 5. **Environment Variables**
    - Click **"Environment Variables"**
@@ -284,6 +285,24 @@ REACT_APP_API_URL=https://your-backend-url.com
 - [ ] Projects added with real links
 
 ## Troubleshooting
+
+### Vercel NOT_FOUND (404) Error
+
+If your deployment shows **NOT_FOUND** or a 404 page:
+
+1. **Root Directory must be `client`**
+   - In Vercel: Project → **Settings** → **General** → **Root Directory** → set to `client`.
+   - If this is wrong or empty, Vercel builds from the repo root. The root `package.json` has no `build` script that produces a frontend, so there is no output to serve → NOT_FOUND.
+   - Fix: Set Root Directory to `client`, then redeploy.
+
+2. **Output Directory**
+   - With Root Directory = `client`, the build output is `client/build`, which Vercel sees as `build`. So **Output Directory** should be `build` (not `client/build`).
+
+3. **SPA rewrites**
+   - This project includes `client/vercel.json` with rewrites so any path (e.g. direct link or refresh) serves `index.html`. If you removed or changed that file, restore it and redeploy.
+
+4. **Verify deployment**
+   - In the Vercel dashboard, confirm the latest deployment succeeded and that you’re opening the correct deployment URL (no typos, correct project).
 
 ### Backend Issues
 - **Build fails:** Check Node.js version (should be 14+)
