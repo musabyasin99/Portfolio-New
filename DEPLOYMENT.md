@@ -88,8 +88,8 @@ Visit your repository on GitHub to confirm all files are uploaded.
 
 5. **Environment Variables**
    - Click **"Environment Variables"**
-   - Add: `REACT_APP_API_URL` = `https://your-backend-url.com`
-   - (You'll add this after deploying backend)
+   - **Contact form (built-in API):** Add `EMAIL_USER` (Gmail address), `EMAIL_PASS` (Gmail App Password), and optionally `CONTACT_EMAIL` (inbox for form submissions; defaults to masabyasin@gmail.com). Leave `REACT_APP_API_URL` unset so the form posts to `/api/contact/send` on the same deployment.
+   - **Or use external backend:** Set `REACT_APP_API_URL` = `https://your-backend-url.com` and deploy the Node server elsewhere; then the form posts to that backend.
 
 6. **Deploy**
    - Click **"Deploy"**
