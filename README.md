@@ -22,6 +22,21 @@ npm run dev
 
 **That's it!** Open [http://localhost:3000](http://localhost:3000) to see your portfolio.
 
+### Deploy (fix NOT_FOUND / 404)
+
+**1. Vercel**  
+- [vercel.com](https://vercel.com) → New Project → Import your repo.  
+- **Root Directory:** set to **`client`** (required).  
+- Build Command: `npm run build`, Output: `build`.  
+- Deploy. The repo includes `client/vercel.json` for SPA routing.
+
+**2. GitHub Pages**  
+- Repo **Settings → Pages → Source:** choose **GitHub Actions**.  
+- Push to `main`; the workflow builds and deploys the client.  
+- Site: `https://<username>.github.io/Portfolio-New` (ensure `client/package.json` `"homepage"` matches).
+
+Full details: [DEPLOYMENT.md](./DEPLOYMENT.md).
+
 > 📖 **New to this project?** Check out [SETUP.md](./SETUP.md) for a detailed step-by-step guide.
 
 ## ✨ Features

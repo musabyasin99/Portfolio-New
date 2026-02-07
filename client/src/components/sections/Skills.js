@@ -9,6 +9,7 @@ import {
 } from 'react-icons/fa';
 import {
   SiMongodb,
+  SiMysql,
   SiExpress,
   SiJavascript,
   SiTypescript,
