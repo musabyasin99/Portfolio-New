@@ -5,6 +5,7 @@ This guide covers deploying your MERN Stack Portfolio to various platforms.
 ## Table of Contents
 - [GitHub Setup](#github-setup)
 - [Frontend Deployment](#frontend-deployment)
+- [GitHub Pages (Option 3)](#option-3-github-pages-free-frontend-only)
 - [Backend Deployment](#backend-deployment)
 - [Database Setup](#database-setup)
 - [Environment Variables](#environment-variables)
@@ -119,6 +120,29 @@ Visit your repository on GitHub to confirm all files are uploaded.
 
 6. **Deploy**
    - Click **"Deploy site"**
+
+### Option 3: GitHub Pages (Free, frontend only)
+
+GitHub Pages serves **static files only** (no Node.js or backend). Only the built React app is deployed; the API must be hosted elsewhere (e.g. Render).
+
+1. **Enable GitHub Pages with GitHub Actions**
+   - In your repo: **Settings** → **Pages**
+   - Under **Build and deployment**, set **Source** to **GitHub Actions**
+
+2. **Set the correct `homepage` in the client**
+   - In `client/package.json`, ensure `"homepage"` matches your Pages URL:
+   - For a **project site**: `https://YOUR_USERNAME.github.io/Portfolio-New` (replace repo name if different)
+   - For a **user site** (repo `YOUR_USERNAME.github.io`): `https://YOUR_USERNAME.github.io`
+
+3. **Deploy**
+   - Push to `main` (or `master`). The workflow `.github/workflows/deploy-gh-pages.yml` builds the client and deploys to GitHub Pages.
+   - After the first run, the site is at `https://YOUR_USERNAME.github.io/Portfolio-New`
+
+4. **SPA fallback**
+   - `client/public/404.html` redirects unknown paths to the app root so direct links and refreshes still load the app.
+
+5. **Environment variables**
+   - Set `REACT_APP_API_URL` in your backend’s URL when you deploy the API. For GitHub Actions you can add it as a repo secret and pass it in the workflow if needed.
 
 ## Backend Deployment
 
@@ -303,6 +327,27 @@ If your deployment shows **NOT_FOUND** or a 404 page:
 
 4. **Verify deployment**
    - In the Vercel dashboard, confirm the latest deployment succeeded and that you’re opening the correct deployment URL (no typos, correct project).
+
+### GitHub Pages NOT_FOUND / 404
+
+If your site at `https://YOUR_USERNAME.github.io/Portfolio-New` shows **404** or **NOT_FOUND**:
+
+1. **Pages source must be GitHub Actions**
+   - Repo **Settings** → **Pages** → **Source**: choose **GitHub Actions** (not “Deploy from a branch”).
+   - The workflow deploys the built app; no `gh-pages` branch is used.
+
+2. **`homepage` in `client/package.json`**
+   - Must match the Pages URL: `https://YOUR_USERNAME.github.io/Portfolio-New` (use your username and repo name).
+   - Wrong or missing `homepage` breaks asset paths (blank or broken page).
+
+3. **Workflow must succeed**
+   - **Actions** tab → open the latest **Deploy to GitHub Pages** run. Fix any build errors (e.g. install or build failures).
+
+4. **SPA / direct links**
+   - `client/public/404.html` redirects 404s to the app root. If you removed it or changed the base path, update the `base` variable in that file to match `homepage` (e.g. `/Portfolio-New`).
+
+5. **Only the frontend is on GitHub Pages**
+   - The backend (Node/Express) does not run on GitHub Pages. Deploy the API to Render/Railway/etc. and set `REACT_APP_API_URL` in the client (e.g. via a build-time env in the workflow).
 
 ### Backend Issues
 - **Build fails:** Check Node.js version (should be 14+)
