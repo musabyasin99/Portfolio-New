@@ -6,8 +6,8 @@ import './Section.css';
 const Introduction = () => {
   const socialLinks = [
     { icon: FaGithub, url: 'https://github.com/musabyasin', label: 'GitHub' },
-    { icon: FaLinkedin, url: 'https://linkedin.com/in/musab-yasin', label: 'LinkedIn' },
-    { icon: FaEnvelope, url: 'mailto:musab.yasin@example.com', label: 'Email' },
+    { icon: FaLinkedin, url: 'https://www.linkedin.com/in/musab-yasin-86911b228/', label: 'LinkedIn' },
+    { icon: FaEnvelope, url: 'mailto:musab@maple.com', label: 'Email' },
   ];
 
   return (

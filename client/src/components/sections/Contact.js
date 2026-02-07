@@ -68,21 +68,21 @@ const Contact = () => {
               <FaEnvelope className="contact-icon" />
               <div>
                 <h4>Email</h4>
-                <p><a href="mailto:masabyasin@gmail.com" style={{color: 'inherit', textDecoration: 'none'}}>masabyasin@gmail.com</a></p>
+                <p><a href="mailto:musab@maple.com" style={{color: 'inherit', textDecoration: 'none'}}>musab@maple.com</a></p>
               </div>
             </div>
             <div className="contact-item">
               <FaPhone className="contact-icon" />
               <div>
                 <h4>Phone</h4>
-                <p><a href="tel:+918491968782" style={{color: 'inherit', textDecoration: 'none'}}>+91-8491968782</a></p>
+                <p><a href="tel:+15550000000" style={{color: 'inherit', textDecoration: 'none'}}>+1 (555) 000-0000</a></p>
               </div>
             </div>
             <div className="contact-item">
               <FaMapMarkerAlt className="contact-icon" />
               <div>
                 <h4>Location</h4>
-                <p>Baghat, Srinagar, J&K – 190005, India</p>
+                <p>City, State – 12345, Country</p>
               </div>
             </div>
           </div>
